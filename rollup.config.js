@@ -5,6 +5,7 @@ import { importMetaAssets } from '@web/rollup-plugin-import-meta-assets';
 import { terser } from 'rollup-plugin-terser';
 import { generateSW } from 'rollup-plugin-workbox';
 import path from 'path';
+import postcss from 'rollup-plugin-postcss';
 
 export default {
   input: 'index.html',
@@ -79,6 +80,11 @@ export default {
       skipWaiting: true,
       clientsClaim: true,
       runtimeCaching: [{ urlPattern: 'polyfills/*.js', handler: 'CacheFirst' }],
+    }),
+    /** Handle CSS files */
+    postcss({
+      extract: true,
+      minimize: true,
     }),
   ],
 };

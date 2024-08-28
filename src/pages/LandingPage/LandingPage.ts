@@ -7,23 +7,7 @@ export class LandingPage extends HTMLElement {
     connectedCallback() {
         if (this.shadowRoot) {
             this.shadowRoot.innerHTML = `
-             <style>
-                main {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content: center;
-                    height: 100%;
-                }
-
-                ul {
-                    text-align: center;
-                    list-style: none;
-                }
-                li {
-                    padding: 0.5rem 0;
-                }
-            </style>
+            
             <main>
                 <h1>Simplr Router Application Demo</h1>
                 <h3>This demo consists of</h3>
