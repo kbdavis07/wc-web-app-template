@@ -1,16 +1,42 @@
 {
   "name": "wc-web-app-template",
-  "version": "1.0.0",
-  "main": "index.js",
+  "version": "0.0.1",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint --ext .ts,.html . --ignore-path .gitignore && prettier \"**/*.ts\" --check --ignore-path .gitignore",
+    "format": "eslint --ext .ts,.html . --fix --ignore-path .gitignore && prettier \"**/*.ts\" --write --ignore-path .gitignore",
+    "prepare": "husky",
+    "build": "rimraf dist && tsc && rollup -c rollup.config.js",
+    "start:build": "web-dev-server --root-dir dist --app-index index.html --open",
+    "start": "tsc && concurrently -k -r \"tsc --watch --preserveWatchOutput\" \"web-dev-server\""
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
+  "author": "Brian Keith Davis",
+  "license": "MIT",
+  "description": "Native Web Component Web App Template",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kbdavis07/wc-web-app-template"},
   "devDependencies": {
     "@types/node": "^22.5.1",
     "typescript": "^5.5.4"
+  },
+  "dependencies": {
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@simplr-wc/router": "^7.0.0-rc19",
+    "@web/dev-server": "^0.4.6",
+    "@web/rollup-plugin-html": "^2.3.0",
+    "@web/rollup-plugin-import-meta-assets": "^2.2.1",
+    "babel-plugin-template-html-minifier": "^4.1.0",
+    "concurrently": "^8.2.2",
+    "deepmerge": "^4.3.1",
+    "eslint": "^9.9.1",
+    "eslint-config-prettier": "^9.1.0",
+    "husky": "^9.1.5",
+    "rollup": "^4.21.1",
+    "rollup-plugin-esbuild": "^6.1.1",
+    "rollup-plugin-workbox": "^8.1.0",
+    "tslib": "^2.7.0"
   }
 }
