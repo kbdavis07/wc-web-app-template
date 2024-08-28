@@ -7,6 +7,7 @@ export class TopNav extends HTMLElement {
     connectedCallback() {
         if (this.shadowRoot) {
             this.shadowRoot.innerHTML = `
+        <link rel="stylesheet" href="./assets/themes/flatty/bootstrap.min.css">
         <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">Navbar</a>
